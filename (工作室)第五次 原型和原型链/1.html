@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//创建Father
+         function Father()
+         {
+            this.bloodtype='A'; 
+         }
+//新建father
+         let father= new Father();
+//创建wife并使Father原型为wife
+         Father.prototype.wife="miss";
+//新建father,wife1
+         //let wife1=new wife();
+
+//创建Son,Daughter
+         function Son()
+         {
+             this.mother=Father.prototype.wife;
+             this.bloodtype=father.bloodtype;
+             this.age=5;
+             this.name='mike';
+             this.phone="15110318972";
+         }
+
+//Son的prototype是father
+        
+        // Son.prototype.constructor=Son;
+         function Daughter()
+         {
+             this.mother=Father.prototype.wife;
+             this.bloodtype=father.bloodtype;
+             this.age=5;
+             this.name='mier';
+             this.phone="18234633748";
+         }
+//Daughter的原型是father
+        
+        // Daughter.prototype.constructor=Daughter;
+
+//新建son1,daughter1,wife,father
+         let son1=new Son();
+         let daughter1=new Daughter();
+//使名字，血型不能改
+         Object.defineProperty(son1, "name", {writable: false, value: "mike"});
+         Object.defineProperty(son1, "bloodtype", {writable: false, value: "A"});
+         Object.defineProperty(daughter1, "name", {writable: false, value: "mier"});
+         Object.defineProperty(daughter1, "bloodtype", {writable: false, value: "A"});
+//打印son1,daughter1
+         console.log(son1);
+         console.log(daughter1);
+
+         
+    </script>
+</body>
+</html>
