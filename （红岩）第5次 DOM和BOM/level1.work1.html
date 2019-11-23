@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+         #div
+         {
+          
+           font-size: 20px;
+         }
+    </style>
+  </head>
+  <body id="body">
+    <div id="div">
+      <h2 class="h2">掘金</h2>
+      <h3>Electron IM 应用开发实践</h3>
+      <p>蘑菇街前端团队正式入驻掘金，希望大家不要吝啬你们手中的赞(比心)!</p>
+      <h3>重构：烧脑判断大扫除</h3>
+      <p>
+        编写业务代码的时候常常会遇到判断，面对各种业务场景，你知道最优方案吗？
+      </p>
+      <button id="button" onclick="handleClick()">夜间模式</button>
+      <button id="protecteye" onclick="protecteye()">护眼模式</button>
+      <button id="big" onclick="big()">大</button>
+      <button id="middle" onclick="middle()">中</button>
+      <button id="small" onclick="small()">小</button>
+    </div>
+    
+
+    <script>
+      let div = document.getElementById("div");
+      function handleClick() 
+    {   
+         div.style.cssText="color:white";
+         body.style.background="black";
+         
+    } 
+
+      function protecteye() 
+    {   
+         body.style.background="darkkhaki";
+         
+    } 
+      function big()
+    {
+         div.style.fontSize="80px";
+    }
+
+      function middle()
+    {
+         div.style.fontSize="40px";
+    }
+    
+      function small()
+    {
+         div.style.fontSize="20px";
+    }
+    </script>
+  </body>
+</html>
