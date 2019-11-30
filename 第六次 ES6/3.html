@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const s = new Set();
+        let x;
+        [2,3,7,5,2,6,9,7,0].forEach(x => s.add(x));
+         let max,flag=0;
+          max=0;
+          s.forEach(x =>{
+              if(max<x)max=x;
+          })
+          s.delete(max);
+        //  const promise = new Promise((resolve,reject) =>{
+        //      s.forEach(x =>{
+        //          if(x==max){
+        //              reject();
+        //              flag=1;
+        //      }
+        //       if(flag==0)resolve();
+        //  })
+        //  promise.then(
+        //      (value) =>{
+        //          console.log("成功啦！！！");
+        //      },(error) =>{
+        //          console.log("失败啦");
+        //      }
+        //  )
+        s.forEach(x =>{
+                 if(x==max){
+                     console.log("失败啦");
+                      flag=1;}
+                      
+        })
+               if(flag==0)console.log("成功啦！！！");
+    </script>
+</body>
+</html>
