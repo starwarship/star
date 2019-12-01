@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        input,button{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchtext">
+    <button id="search">搜索</button>
+    <div id="searchResult"></div>
+    <script>
+       $('button').click(() =>{
+           var keyword = $('#searchtext').val();
+
+           $.ajax({
+                 type:'GET',
+                 url:'https://api.github.com/search/repositories?q='+keyword+'+in:name&sort=stars&order=desc' ,
+                 success:function(data){
+                    var htmlstr = "<ul>";
+                    var dataarry = data.items;
+                    var i;
+                    for(i in dataarry) htmlstr += "<li>"+dataarry[i].name+"</li>";
+                    htmlstr += "</ul>";
+                    $("#searchResult").html(htmlstr);
+                 
+                 }
+           })
+       })
+
+    </script>
+</body>
+</html>
