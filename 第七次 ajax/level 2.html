@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">click me</button>
+    <script>
+        //GET
+        let button = document.getElementById("button");
+        button.addEventListener('click',() =>{
+            fetch("http://39.107.142.107:3000/mock/25/getText")
+             .then(function(response){
+                 return response.json();
+             })
+             .then(function(myjson){
+                 console.log(myjson);
+             })
+        })
+
+        //POST
+        let button = document.getElementById("button");
+        let msg ={
+            "name":"levi",
+            "id":20
+        }
+        button.addEventListener('click',()=>{
+            fetch("http://39.107.142.107:3000/mock/25/testPost",{
+               method:'POST',
+               body:JSON.stringify(msg),
+               headers:{
+                   'Content-Type':"application/json"
+               }
+            })
+            .then(function(response){
+                 return response.json();
+             })
+             .then(function(myjson){
+                 console.log(myjson);
+             })
+        })
+    </script>
+</body>
+</html>

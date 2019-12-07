@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="button">click me</button>
+    <script>
+        //封装GET
+        let button = document.getElementById("button");
+        button.addEventListener('click',()=>{
+            getJSON('http://39.107.142.107:3000/mock/25/getText').then(function(json){
+                  console.log(json)
+            },function(error){
+                  console.error('error',error);
+            })
+        })
+
+        const getJSON = function(url)
+        {
+          const promise = new Promise(function(resolve,reject){
+              const hander = function(){
+                  if(this.readyState!== 4){
+                      return;
+                  }
+                  if(this.status ==200)
+                  {
+                      resolve(this.response);
+                  }else{
+                      reject(new Error(this.statusText))
+                  }
+              }
+        const client = new XMLHttpRequest();
+        client.open('GET',url);
+        client.onreadystatechange=hander
+        client.setRequestHeader("Accept","application/json")
+        client.send();
+          })
+          return promise;
+        }
+
+        //封装POST
+        let button = document.getElementById("button");
+        let msg ={
+            "name":"levi",
+            "id":20
+        }
+        button.addEventListener('click',()=>{
+            getJSON('http://39.107.142.107:3000/mock/25/testPost').then(function(json){
+                  console.log(json)
+            },function(error){
+                  console.error('error',error);
+            })
+        })
+
+        const getJSON = function(url)
+        {
+          const promise = new Promise(function(resolve,reject){
+              const hander = function(){
+                  if(this.readyState!== 4){
+                      return;
+                  }
+                  if(this.status ==200)
+                  {
+                      resolve(this.response);
+                  }else{
+                      reject(new Error(this.statusText))
+                  }
+              }
+        const client = new XMLHttpRequest();
+        client.open('POST',url);
+        client.onreadystatechange=hander
+        client.setRequestHeader("Content-Type","application/json")
+        client.send(JSON.stringify(msg));
+          })
+          return promise;
+        }
+    </script>
+</body>
+</html>
